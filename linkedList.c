@@ -97,7 +97,8 @@ node *insertNode(int data, int position){
 
 int main(){
     int option = -1;
-    int option2; 
+    int arg1;
+    int arg2; 
     node *new;
     while(option != 5){
         printMenu();
@@ -106,13 +107,13 @@ int main(){
             switch(option){
                 case 1:
                     printf("Value to store?\n");
-                    scanf("%d", &option);
-                    new = addNode(option);
+                    scanf("%d", &arg1);
+                    new = addNode(arg1);
                     break;
                 case 2:
                     printf("Value to remove?\n");
-                    scanf("%d", &option);
-                    int retVal = removeNode(option);
+                    scanf("%d", &arg1);
+                    int retVal = removeNode(arg1);
                     if(retVal){
                         printf("Node has been removed\n");
                     }
@@ -122,10 +123,10 @@ int main(){
                     break;
                 case 3:
                     printf("Value to store?\n");
-                    scanf("%d", &option);
+                    scanf("%d", &arg1);
                     printf("Index of node to store it at?\n");
-                    scanf("%d", &option2);
-                    new = insertNode(option, option2);
+                    scanf("%d", &arg2);
+                    new = insertNode(arg1, arg2);
                     if(new == NULL){
                         printf("Failed to insert into list\n");
                     }
