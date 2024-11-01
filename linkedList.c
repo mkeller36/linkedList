@@ -73,8 +73,32 @@ int removeNode(int data){
     return 0;
 }
 
+node *insertNode(int data, int position){
+    node *current = head;
+    while(current != NULL && position != 0){
+
+        position--;
+    }
+
+    if(position != 0){
+        printf("List is too short to contain requested position\n");
+        return NULL;
+    }
+
+    node *new = malloc(sizeof(node));
+    if(new == NULL){
+        return NULL;
+    }
+    new->value = data;
+    new->next = current->next;
+    current->next = new;
+    return new;
+}
+
 int main(){
     int option = -1;
+    int option2; 
+    node *new;
     while(option != 5){
         printMenu();
         int num_recieved = scanf("%d", &option);
@@ -83,7 +107,7 @@ int main(){
                 case 1:
                     printf("Value to store?\n");
                     scanf("%d", &option);
-                    node *new = addNode(option);
+                    new = addNode(option);
                     break;
                 case 2:
                     printf("Value to remove?\n");
@@ -97,6 +121,15 @@ int main(){
                     }
                     break;
                 case 3:
+                    printf("Value to store?\n");
+                    scanf("%d", &option);
+                    printf("Index of node to store it at?\n");
+                    scanf("%d", &option2);
+                    new = insertNode(option, option2);
+                    if(new == NULL){
+                        printf("Failed to insert into list\n");
+                    }
+                    break;
                 case 4:    
                     printList();
                     break;
