@@ -8,6 +8,16 @@ typedef struct{
 
 node *head = NULL;
 
+void printList(){
+    node *current = head;
+    while(current != NULL){
+        printf("%d -> ", current->value);
+        current = current->next;
+    }
+    printf("\n");
+    return;
+}
+
 void printMenu(void){
     printf("You have the following options:\n");
     printf("\t1. Add a node to the list.\n");
@@ -48,12 +58,16 @@ int main(){
         if(num_recieved == 1 && option > 0 && option <= 5){
             switch(option){
                 case 1:
-
+                    printf("Value to store?\n");
+                    scanf("%d", &option);
+                    node *new = addNode(option);
+                    break;
                 case 2:
 
                 case 3:
-
                 case 4:    
+                    printList();
+                    break;
             }
         }
     }
