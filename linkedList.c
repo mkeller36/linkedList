@@ -50,6 +50,29 @@ node *addNode(int value){
     return new;
 }
 
+int removeNode(int data){
+    node *current = head;
+    node *prev = head;
+    while(current != NULL){
+        if(current->value==data){
+            if(current == head){
+                head = current->next;
+            }
+            else{
+                prev->next = current->next;
+                free(current);
+                current == NULL;
+            }
+
+            return 1;
+        }
+        prev = current;
+        current = current->next;
+    }
+
+    return 0;
+}
+
 int main(){
     int option = -1;
     while(option != 5){
@@ -63,7 +86,16 @@ int main(){
                     node *new = addNode(option);
                     break;
                 case 2:
-
+                    printf("Value to remove?\n");
+                    scanf("%d", &option);
+                    int retVal = removeNode(option);
+                    if(retVal){
+                        printf("Node has been removed\n");
+                    }
+                    else{
+                        printf("Node could not be found\n");
+                    }
+                    break;
                 case 3:
                 case 4:    
                     printList();
